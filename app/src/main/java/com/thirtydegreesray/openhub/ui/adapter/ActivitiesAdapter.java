@@ -266,6 +266,8 @@ public class ActivitiesAdapter extends BaseAdapter<ActivitiesAdapter.ViewHolder,
             EventPayload.PullRequestReviewEventActionType actionType =
                     EventPayload.PullRequestReviewEventActionType.valueOf(action);
             switch (actionType){
+                case created:
+                    return getString(R.string.created_pull_request_review_at);
                 case submitted:
                     return getString(R.string.submitted_pull_request_review_at);
                 case edited:

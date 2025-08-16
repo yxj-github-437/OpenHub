@@ -381,6 +381,7 @@
     <string name="created_pull_request_comment_at">Created pull request review comment at %s</string>
     <string name="deleted_pull_request_comment_at">Deleted pull request review comment at %s</string>
     <string name="edited_pull_request_comment_at">Edited pull request review comment at %s</string>
+    <string name="created_pull_request_review_at">Created pull request review at %s</string>
     <string name="submitted_pull_request_review_at">Submitted pull request review at %s</string>
     <string name="edited_pull_request_review_at">Edited pull request review at %s</string>
     <string name="dismissed_pull_request_review_at">Dismissed pull request review at %s</string>
