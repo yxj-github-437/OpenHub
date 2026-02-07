@@ -30,6 +30,7 @@ import com.thirtydegreesray.openhub.util.GitHubHelper;
 import com.thirtydegreesray.openhub.util.PrefUtils;
 import com.thirtydegreesray.openhub.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 import javax.inject.Inject;
@@ -203,7 +204,8 @@ public class ActivitiesAdapter extends BaseAdapter<ActivitiesAdapter.ViewHolder,
                     actionStr = String.format(getString(R.string.push_to), branch, fullName);
 
                     descSpan = new SpannableStringBuilder("");
-                    int count = model.getPayload().getCommits().size();
+                    ArrayList commits = model.getPayload().getCommits();
+                    int count = commits != null ? commits.size() : 0;
                     int maxLines = 4;
                     int max = count > maxLines ? maxLines - 1 : count;
 
