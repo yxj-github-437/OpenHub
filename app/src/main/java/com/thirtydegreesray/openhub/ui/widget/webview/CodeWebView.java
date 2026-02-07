@@ -152,6 +152,8 @@ public class CodeWebView extends WebView {
         settings.setSupportZoom(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
         String page = HtmlHelper.generateCodeHtml(source, extension, AppUtils.isNightMode(),
                 getCodeBackgroundColor(), wrap, true);
         loadPage(page);

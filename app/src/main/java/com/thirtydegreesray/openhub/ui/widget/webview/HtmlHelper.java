@@ -84,52 +84,44 @@ class HtmlHelper {
                                            @Nullable String skin, @NonNull String backgroundColor,
                                            boolean wrap, boolean lineNums) {
         String lang = guessLanguage(extension);
-        return "<html>\n" +
-                    "<head>\n" +
-                        "<meta charset=\"utf-8\" />\n" +
-                        "<title>Code View</title>\n" +
-                        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>" +
-                        "<link rel=\"stylesheet\" href=\"./highlight/styles/" + skin + ".css\">\n" +
-                        "<script src=\"./highlight/highlight.min.js\"></script>\n" +
-                        "<script>\n" +
-                        "document.addEventListener('DOMContentLoaded', (event) => {\n" +
-                        "   document.querySelectorAll('pre code').forEach((el) => {\n" +
-                        "       hljs.highlightAll(el);\n" +
-                                (lineNums ? "let lines = el.innerHTML.split('\\n');\n" +
-                                            "lines.shift();\n" +
-                                            "var lineNumberWidth = lines.length.toString().length * 10" + (wrap ? " + 4" : "") + ";\n" +
-                                            "var css = document.createElement('style');\n" +
-                                            "css.type = 'text/css';\n" +
-                                            "var newStyle = `.line-number {\\n" +
-                                            "  display: inline-block;\\n" +
-                                            "  width: ${lineNumberWidth}px;\\n" +
-                                            "  text-align: right;\\n" +
-                                            "  color: #999;\\n" +
-                                            "  margin-right: 16px;\\n" +
-                                            "  user-select: none;\\n" +
-                                            "}`;\n" +
-                                            "css.innerHTML = newStyle;\n" +
-                                            "document.head.appendChild(css);\n" +
-                                            "el.innerHTML = lines.map(function(line, index) {\n" +
-                                            "   return '<span class=\"line-number\">' + (index + 1) + '.' + '</span>' + line;\n" +
-                                            "}).join('\\n');" : "") +
-                        "   })\n" +
-                        "})\n" +
-                        "</script>\n" +
-                        "<style>" +
-                            "body {background: " + backgroundColor + ";}\n" +
-                            "code {\n" +
-                            "    word-wrap: " + (wrap ? "break-word" : "normal") + ";\n" +
-                            "    white-space: " + (wrap ? "pre-wrap" : "no-wrap") + ";\n" +
-                            "}\n" +
-                        "</style>" +
-                    "</head>\n" +
-                    "<body>\n" +
-                        "<pre><code" + (lang != null ? " class=\"language-" + lang + "\"" : "") +">\n" +
-                            formatCode(codeSource) +
-                        "</pre>\n" +
-                    "</body>\n" +
-                "</html>";
+        return  "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "   <meta charset=\"utf-8\">\n" +
+                "   <title>Code View</title>\n" +
+                "   <style type=\"text/css\">\n" +
+                "       pre {\n" +
+                "           margin: 0;\n" +
+                "       }\n" +
+                "   </style>\n" +
+                "   <link rel=\"stylesheet\" href=\"./highlight/styles/" + skin + ".css\"/>\n" +
+                "   <style type=\"text/css\">\n" +
+                "       .hljs-line-numbers {\n" +
+                "           \ttext-align: right;\n" +
+                "           \tvertical-align: top;\n" +
+                "           \tborder-right: 1px solid #ccc;\n" +
+                "           \tcolor: #999;\n" +
+                "           \t-webkit-touch-callout: none;\n" +
+                "           \t-webkit-user-select: none;\n" +
+                "           \t-khtml-user-select: none;\n" +
+                "           \t-moz-user-select: none;\n" +
+                "           \t-ms-user-select: none;\n" +
+                "           \tuser-select: none;\n" +
+                "       }\n" +
+                "    </style>\n" +
+                "    <script src=\"./highlight/highlight.min.js\"></script>\n" +
+                "    <script src=\"./highlight/highlightjs-line-numbers.min.js\"></script>\n" +
+                "    <script>hljs.highlightAll();</script>\n" +
+                (lineNums ? "    <script>hljs.initLineNumbersOnLoad({singleLine: true});</script>\n" : "\n") +
+                "    <style>\n" +
+                "        body {background: " + backgroundColor + ";}\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body style=\"margin: 0; padding: 0\" class=\"hljs\">\n" +
+                "<pre><code" + (lang != null ? " class=\"language-" + lang + "\"" : "") +">" +
+                formatCode(codeSource) +
+                "</pre>\n" +
+                "</body>\n</html>\n";
     }
 
     static String generateMdHtml(@NonNull String mdSource, @Nullable String baseUrl,
