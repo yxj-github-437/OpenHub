@@ -11,6 +11,7 @@ import com.thirtydegreesray.openhub.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,17 +61,41 @@ class HtmlHelper {
         return generateCodeHtml(codeSource, extension, skin, backgroundColor, wrap, lineNums);
     }
 
+    final static Map<String, String> langMap;
+    static {
+        langMap = new TreeMap<>();
+        langMap.put("sh", "bash");
+        langMap.put("h", "cpp");
+        langMap.put("hpp", "cpp");
+        langMap.put("cpp", "cpp");
+        langMap.put("cc", "cpp");
+        langMap.put("cxx", "cpp");
+        langMap.put("c", "c");
+        langMap.put("mk", "Makefile");
+        langMap.put("cmake", "cmake");
+        langMap.put("py", "python");
+        langMap.put("kt", "kotlin");
+        langMap.put("java", "java");
+        langMap.put("rs", "rust");
+        langMap.put("js", "javascript");
+        langMap.put("css", "css");
+        langMap.put("yml", "yaml");
+        langMap.put("yaml", "yaml");
+        langMap.put("clangd", "yaml");
+        langMap.put("clang-format", "yaml");
+        langMap.put("clang-tidy", "yaml");
+        langMap.put("html", "html");
+        langMap.put("xml", "xml");
+        langMap.put("json", "json");
+        langMap.put("lua", "lua");
+        langMap.put("go", "go");
+        langMap.put("gradle", "gradle");
+        langMap.put("bat", "dos");
+        langMap.put("patch", "patch");
+    }
+
     private static String guessLanguage(@Nullable String extension) {
         if (extension == null) return null;
-        final Map<String, String> langMap = Map.of("h", "cpp",
-                                                   "hpp", "cpp",
-                                                   "cpp", "cpp",
-                                                   "cc", "cpp",
-                                                   "cxx", "cpp",
-                                                   "c", "c",
-                                                   "kt", "kotlin",
-                                                   "java", "java",
-                                                   "rs", "rust");
 
         if (langMap.containsKey(extension)) {
             return langMap.get(extension);
