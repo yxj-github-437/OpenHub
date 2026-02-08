@@ -185,7 +185,9 @@ class HtmlHelper {
 
     private static String formatCode(@NonNull String codeSource) {
         if (StringUtils.isBlank(codeSource)) return codeSource;
-        return codeSource.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+        return codeSource.replaceAll("&", "&amp;")
+                         .replaceAll("<", "&lt;")
+                         .replaceAll(">", "&gt;");
     }
 
     private static String fixWikiLinks(@NonNull String source) {
