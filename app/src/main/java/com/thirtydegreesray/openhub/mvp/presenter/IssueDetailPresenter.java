@@ -92,7 +92,7 @@ public class IssueDetailPresenter extends BasePresenter<IIssueDetailContract.Vie
             issueNumber = issue.getNumber();
         } else if (!StringUtils.isBlank(issueUrl)) {
             issueUrl = issueUrl.replace("api.github.com/repos", "github.com");
-            if (!GitHubHelper.isIssueUrl(issueUrl)) return;
+            if (!GitHubHelper.isIssueDetailUrl(issueUrl)) return;
             String[] arrays = issueUrl.substring(issueUrl.indexOf("com/") + 4).split("/");
             owner = arrays[0];
             repoName = arrays[1];

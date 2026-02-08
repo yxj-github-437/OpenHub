@@ -36,6 +36,8 @@ public class GitHubHelper {
     private static final Pattern REPO_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
             + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*(/)?");
     private static final Pattern ISSUE_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
+            + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*/issues(/)?");
+    private static final Pattern ISSUE_DETAIL_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
             + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*/issues/(\\d)*(/)?");
     private static final Pattern RELEASES_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
             + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*/releases(/latest)?(/)?");
@@ -95,6 +97,10 @@ public class GitHubHelper {
 
     public static boolean isRepoUrl(@NonNull String url){
         return REPO_PATTERN.matcher(url).matches();
+    }
+
+    public static boolean isIssueDetailUrl(@NonNull String url){
+        return ISSUE_DETAIL_PATTERN.matcher(url).matches();
     }
 
     public static boolean isIssueUrl(@NonNull String url){
