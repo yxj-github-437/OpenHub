@@ -13,10 +13,12 @@ import com.thirtydegreesray.openhub.mvp.model.DownloadSource;
 import com.thirtydegreesray.openhub.ui.adapter.base.BaseAdapter;
 import com.thirtydegreesray.openhub.ui.adapter.base.BaseViewHolder;
 import com.thirtydegreesray.openhub.util.AppOpener;
+import com.thirtydegreesray.openhub.util.AppUtils;
 import com.thirtydegreesray.openhub.util.StringUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 /**
  * Created by ThirtyDegreesRay on 2017/9/16 15:53:46
@@ -65,6 +67,12 @@ public class DownloadSourcesAdapter extends BaseAdapter<DownloadSourcesAdapter.V
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        @OnLongClick(R2.id.name)
+        public void onNameLongClick() {
+            DownloadSource source = data.get(getAdapterPosition());
+            AppUtils.copyToClipboard(context, source.getUrl());
         }
 
         @OnClick(R2.id.download_bn)
