@@ -1,7 +1,7 @@
 English | [中文](/README-cn.md)
 # OpenHub
 [![Releases](https://img.shields.io/badge/android-5.0%2B-brightgreen.svg)](https://play.google.com/store/apps/details?id=com.thirtydegreesray.openhub)
-[![Releases](https://img.shields.io/github/release/ThirtyDegreesRay/OpenHub.svg)](https://github.com/ThirtyDegreesRay/OpenHub/releases/latest)
+[![Releases](https://img.shields.io/github/release/yxj-github-437/OpenHub.svg)](https://github.com/yxj-github-437/OpenHub/releases/latest)
 
 An **open-source** GitHub Android client app, faster and concise.
 
@@ -98,6 +98,8 @@ An **open-source** GitHub Android client app, faster and concise.
 * [jsoup](https://github.com/jhy/jsoup) Java HTML Parser, with best of DOM, CSS, and jquery.
 * [OctoDroid](https://github.com/slapperwan/gh4a) This application provides access to GitHub and lets you stay connected with your network.
 * [FastHub](https://github.com/k0shk0sh/FastHub) FastHub the ultimate GitHub client for Android.
+* [highlight](https://github.com/highlight/highlight) Highlight code in WebView.
+* [highlightjs-line-numbers.js](https://github.com/yauhenipakala/highlightjs-line-numbers.js) Display code line number with highlightjs.
 
 ## Contributions(*Order by commit time*)
 * [moriel5](https://github.com/moriel5) - Hebrew translation
