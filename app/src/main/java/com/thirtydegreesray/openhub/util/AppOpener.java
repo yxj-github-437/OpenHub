@@ -13,6 +13,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.browser.customtabs.CustomTabsIntent;
+
+import android.os.Build;
 import android.widget.Toast;
 
 import com.thirtydegreesray.openhub.R;
@@ -59,11 +61,13 @@ public class AppOpener {
             Intent shareIntent = new Intent(context.getApplicationContext(), ShareBroadcastReceiver.class);
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent sharePendingIntent = PendingIntent.getBroadcast(
-                    context.getApplicationContext(), 0, shareIntent, 0);
+                    context.getApplicationContext(), 0, shareIntent,
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ? PendingIntent.FLAG_IMMUTABLE : 0);
             Intent copyIntent = new Intent(context.getApplicationContext(), CopyBroadcastReceiver.class);
             copyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent copyPendingIntent = PendingIntent.getBroadcast(
-                    context.getApplicationContext(), 0, copyIntent, 0);
+                    context.getApplicationContext(), 0, copyIntent,
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ? PendingIntent.FLAG_IMMUTABLE : 0);
 
             CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder()
                     .setToolbarColor(ViewUtils.getPrimaryColor(context))
