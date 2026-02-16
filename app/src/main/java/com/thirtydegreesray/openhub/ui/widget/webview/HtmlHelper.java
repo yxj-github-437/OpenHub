@@ -121,25 +121,37 @@ class HtmlHelper {
                 "   </style>\n" +
                 "   <link rel=\"stylesheet\" href=\"./highlight/styles/" + skin + ".css\"/>\n" +
                 "   <style type=\"text/css\">\n" +
-                "       .hljs-line-numbers {\n" +
-                "           \ttext-align: right;\n" +
-                "           \tvertical-align: top;\n" +
-                "           \tborder-right: 1px solid #ccc;\n" +
-                "           \tcolor: #999;\n" +
-                "           \t-webkit-touch-callout: none;\n" +
-                "           \t-webkit-user-select: none;\n" +
-                "           \t-khtml-user-select: none;\n" +
-                "           \t-moz-user-select: none;\n" +
-                "           \t-ms-user-select: none;\n" +
-                "           \tuser-select: none;\n" +
+                "       /* for block of numbers */\n" +
+                "       .hljs-ln-numbers {\n" +
+                "           -webkit-touch-callout: none;\n" +
+                "           -webkit-user-select: none;\n" +
+                "           -khtml-user-select: none;\n" +
+                "           -moz-user-select: none;\n" +
+                "           -ms-user-select: none;\n" +
+                "           user-select: none;\n" +
+                "           text-align: right;\n" +
+                "           color: #999;\n" +
+                "           border-right: 1px solid #CCC;\n" +
+                "           vertical-align: top;\n" +
                 "       }\n" +
+                "       .hljs-ln td.hljs-ln-numbers {\n" +
+                "           padding-right: 5px;\n" +
+                "       }\n" +
+                "       /* for block of code */\n" +
+                "       .hljs-ln td.hljs-ln-code {\n" +
+                "           padding-left: 10px;\n" +
+                "       }" +
                 "    </style>\n" +
                 "    <script src=\"./highlight/highlight.min.js\"></script>\n" +
-                "    <script src=\"./highlight/highlightjs-line-numbers.min.js\"></script>\n" +
+                "    <script src=\"./highlight/highlightjs-line-numbers.js\"></script>\n" +
                 "    <script>hljs.highlightAll();</script>\n" +
                 (lineNums ? "    <script>hljs.initLineNumbersOnLoad({singleLine: true});</script>\n" : "\n") +
                 "    <style>\n" +
-                "        body {background: " + backgroundColor + ";}\n" +
+                "       body {background: " + backgroundColor + ";}\n" +
+                "       code {\n" +
+                "           word-wrap: " + (wrap ? "break-word" : "normal") + ";\n" +
+                "           white-space: " + (wrap ? "pre-wrap" : "no-wrap") + ";\n" +
+                "       }\n" +
                 "    </style>\n" +
                 "</head>\n" +
                 "<body style=\"margin: 0; padding: 0\" class=\"hljs\">\n" +
