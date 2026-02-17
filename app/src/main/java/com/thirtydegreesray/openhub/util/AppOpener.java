@@ -23,6 +23,7 @@ import com.thirtydegreesray.openhub.mvp.model.GitHubName;
 import com.thirtydegreesray.openhub.service.CopyBroadcastReceiver;
 import com.thirtydegreesray.openhub.service.ShareBroadcastReceiver;
 import com.thirtydegreesray.openhub.ui.activity.CommitDetailActivity;
+import com.thirtydegreesray.openhub.ui.activity.CommitsListActivity;
 import com.thirtydegreesray.openhub.ui.activity.IssueDetailActivity;
 import com.thirtydegreesray.openhub.ui.activity.IssuesActivity;
 import com.thirtydegreesray.openhub.ui.activity.ProfileActivity;
@@ -199,6 +200,9 @@ public class AppOpener {
             ReleaseInfoActivity.show((Activity) context, userName, repoName, gitHubName.getReleaseTagName());
         } else if (GitHubHelper.isCommitUrl(url)) {
             CommitDetailActivity.show((Activity) context, url);
+        } else if (GitHubHelper.isCompareUrl(url)) {
+            String[] compare = gitHubName.getCompareDetails();
+            CommitsListActivity.showForCompare((Activity) context, userName, repoName, compare[0], compare[1]);
         } else {
             openInCustomTabsOrBrowser(context, url);
         }

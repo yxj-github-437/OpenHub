@@ -47,6 +47,9 @@ public class GitHubHelper {
     private static final Pattern COMMIT_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
             + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*/commit(s)?/([a-z]|\\d)*(/)?");
 
+    private static final Pattern COMPARE_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR
+            + "/([a-z]|[A-Z]|\\d|-)*/([a-z]|[A-Z]|\\d|-|\\.|_)*/compare/([^/]+)\\.\\.\\.([^/]+)");
+
     private static final Pattern GITHUB_URL_PATTERN = Pattern.compile(GITHUB_BASE_URL_PATTERN_STR + "(.)*");
 
     public static boolean isImage(@Nullable String name) {
@@ -121,6 +124,10 @@ public class GitHubHelper {
 
     public static boolean isCommitUrl(@NonNull String url){
         return COMMIT_PATTERN.matcher(url).matches();
+    }
+
+    public static boolean isCompareUrl(@NonNull String url) {
+        return COMPARE_PATTERN.matcher(url).matches();
     }
 
     @Nullable

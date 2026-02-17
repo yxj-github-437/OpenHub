@@ -58,5 +58,15 @@ public class GitHubName {
         return url.substring(url.lastIndexOf("/") + 1);
     }
 
+    public String[] getCompareDetails() {
+        if (!GitHubHelper.isCompareUrl(url)) {
+            return null;
+        }
+        return new String[] {
+                url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("...")),
+                url.substring(url.lastIndexOf("...") + 3)
+        };
+    }
+
 
 }
