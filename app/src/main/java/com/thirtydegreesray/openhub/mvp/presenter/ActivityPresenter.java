@@ -11,7 +11,11 @@ import com.thirtydegreesray.openhub.http.core.HttpResponse;
 import com.thirtydegreesray.openhub.http.error.HttpPageNoFoundError;
 import com.thirtydegreesray.openhub.mvp.contract.IActivityContract;
 import com.thirtydegreesray.openhub.mvp.model.ActivityRedirectionModel;
+import com.thirtydegreesray.openhub.mvp.model.CommitsComparison;
 import com.thirtydegreesray.openhub.mvp.model.Event;
+import com.thirtydegreesray.openhub.mvp.model.EventPayload;
+import com.thirtydegreesray.openhub.mvp.model.PushEventCommit;
+import com.thirtydegreesray.openhub.mvp.model.RepoCommit;
 import com.thirtydegreesray.openhub.mvp.model.User;
 import com.thirtydegreesray.openhub.mvp.presenter.base.BasePagerPresenter;
 import com.thirtydegreesray.openhub.ui.fragment.ActivityFragment;
@@ -86,6 +90,47 @@ public class ActivityPresenter extends BasePagerPresenter<IActivityContract.View
                 if(response.body().size() == 0 && events.size() != 0){
                     mView.setCanLoadMore(false);
                 } else {
+                    for (Event e: events) {
+                        if (e.getType() == Event.EventType.PullRequestEvent && e.getRepo() != null) {
+                            continue;
+                        } else if (e.getType() == Event.EventType.PushEvent && e.getRepo() != null) {
+                            EventPayload payload = e.getPayload();
+                            if (payload.getCommits() != null)
+                                continue;
+
+                            generalRxHttpExecute(new IObservableCreator<CommitsComparison>() {
+                                @Override
+                                public Observable<Response<CommitsComparison>> createObservable(boolean forceNetWork) {
+                                    return getCommitService().compareTwoCommits(forceNetWork, user, e.getRepo().getName(), payload.getBefore(), payload.getHead());
+                                }
+                            }, new HttpObserver<CommitsComparison>() {
+                                @Override
+                                public void onError(Throwable error) {
+                                    payload.setCommits(null);
+                                }
+
+                                @Override
+                                public void onSuccess(HttpResponse<CommitsComparison> response) {
+                                    CommitsComparison compare = response.body();
+                                    if (compare == null) return;
+                                    ArrayList<PushEventCommit> commits = new ArrayList<>(compare.getTotalCommits());
+
+                                    for (RepoCommit commit: compare.getCommits()) {
+                                        PushEventCommit pushCommit = new PushEventCommit();
+                                        pushCommit.setAuthor(commit.getAuthor());
+                                        pushCommit.setSha(commit.getSha());
+                                        pushCommit.setUrl(commit.getCommit().getUrl());
+                                        pushCommit.setMessage(commit.getCommit().getMessage());
+                                        commits.add(pushCommit);
+                                    }
+
+                                    payload.setCommits(commits);
+                                    mView.showEvents(events);
+                                }
+                            }, readCacheFirst);
+                        }
+                    }
+
                     mView.showEvents(events);
                 }
             }
