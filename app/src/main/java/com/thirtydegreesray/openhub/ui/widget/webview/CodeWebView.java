@@ -118,7 +118,7 @@ public class CodeWebView extends WebView {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
         String html = HtmlHelper.generateImageHtml(url, getCodeBackgroundColor());
-        loadData(html, "text/html", null);
+        loadHtml(html);
     }
 
     public void setHtmlSource(@NonNull String htmlSource) {
@@ -130,7 +130,7 @@ public class CodeWebView extends WebView {
         settings.setDisplayZoomControls(false);
         String html = HtmlHelper.generateHtmlSourceHtml(htmlSource,
                 getCodeBackgroundColor(), getAccentColor());
-        loadData(html, "text/html", null);
+        loadHtml(html);
     }
 
     public void setMdSource(@NonNull String source, @Nullable String baseUrl) {
@@ -179,6 +179,10 @@ public class CodeWebView extends WebView {
                 loadDataWithBaseURL(baseUrl, page, "text/html", "utf-8", null);
             }
         });
+    }
+
+    private void loadHtml(String html) {
+        loadPageWithBaseUrl("file:///android_asset/", html);
     }
 
     private void loadPage(String page) {
