@@ -5,8 +5,8 @@ English | [中文](/README-cn.md)
 
 An **open-source** GitHub Android client app, faster and concise.
 
-[![Google Play](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/google_play.png?raw=true)](https://play.google.com/store/apps/details?id=com.thirtydegreesray.openhub)
-[![Coolapk](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/coolapk.png?raw=true)](https://www.coolapk.com/apk/com.thirtydegreesray.openhub)
+[![Google Play](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/google_play.png?raw=true)](https://play.google.com/store/apps/details?id=com.thirtydegreesray.openhub)
+[![Coolapk](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/coolapk.png?raw=true)](https://www.coolapk.com/apk/com.thirtydegreesray.openhub)
 
 ## Features
 
@@ -71,11 +71,11 @@ An **open-source** GitHub Android client app, faster and concise.
 
 | News | Drawer | Profile |
 |:-:|:-:|:-:|
-| ![news](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/news.png?raw=true) | ![drawer](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/drawer.png?raw=true) | ![profile](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/profile.png?raw=true) |
+| ![news](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/news.png?raw=true) | ![drawer](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/drawer.png?raw=true) | ![profile](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/profile.png?raw=true) |
 
 | Repository | Commit | Code |
 |:-:|:-:|:-:|
-| ![repo](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/repo.png?raw=true) | ![commit](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/commit.png?raw=true) | ![code](https://raw.githubusercontent.com/ThirtyDegreesRay/OpenHub/master/art/code.png?raw=true) |
+| ![repo](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/repo.png?raw=true) | ![commit](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/commit.png?raw=true) | ![code](https://raw.githubusercontent.com/yxj-github-437/OpenHub/master/art/code.png?raw=true) |
 
 ## Thanks for open source
 
