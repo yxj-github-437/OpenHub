@@ -87,6 +87,18 @@ public class Release implements Parcelable {
         this.zipballUrl = zipballUrl;
     }
 
+    public String getTarballUrlWrap() {
+        return tarballUrl.replace("https://api.github.com/repos","https://github.com")
+                         .replace("tarball", "archive/refs/tags")
+                + ".tar.gz";
+    }
+
+    public String getZipballUrlWrap() {
+        return zipballUrl.replace("https://api.github.com/repos","https://github.com")
+                         .replace("zipball", "archive/refs/tags")
+                + ".zip";
+    }
+
     public boolean isDraft() {
         return draft;
     }

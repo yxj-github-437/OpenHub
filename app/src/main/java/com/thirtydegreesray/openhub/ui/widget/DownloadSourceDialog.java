@@ -46,9 +46,9 @@ public class DownloadSourceDialog {
         for(ReleaseAsset asset : release.getAssets()){
             sources.add(new DownloadSource(asset.getDownloadUrl(), false, asset.getName(), asset.getSize()));
         }
-        sources.add(new DownloadSource(release.getZipballUrl(), true,
+        sources.add(new DownloadSource(release.getZipballUrlWrap(), true,
                 context.getString(R.string.source_code_zip)));
-        sources.add(new DownloadSource(release.getTarballUrl(), true,
+        sources.add(new DownloadSource(release.getTarballUrlWrap(), true,
                 context.getString(R.string.source_code_tar)));
         return sources;
     }
